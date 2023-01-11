@@ -144,20 +144,16 @@ async function run() {
 
 			const query = { email: email };
 			const user = await userCollection.findOne(query);
-			let isAdmin = false;
-			if (user?.role === "admin") {
-				isAdmin = true;
-			}
-			res.json({ admin: isAdmin });
+				res.json(user);
 		});
 			//* Get User
-		app.get("/users/:email", async (req, res) => {
-			const email = req.params.email;
+		// app.get("/users/:email", async (req, res) => {
+		// 	const email = req.params.email;
 
-			const query = { email: email };
-			const user = await userCollection.findOne(query);
-			res.json(user);
-		});
+		// 	const query = { email: email };
+		// 	const user = await userCollection.findOne(query);
+		// 	res.json(user);
+		// });
 		//*DELETE Single Data
 		app.delete("/project/:id", async (req, res) => {
 			const id = req.params.id;
