@@ -150,6 +150,14 @@ async function run() {
 			}
 			res.json({ admin: isAdmin });
 		});
+			//* Get User
+		app.get("/users/:email", async (req, res) => {
+			const email = req.params.email;
+
+			const query = { email: email };
+			const user = await userCollection.findOne(query);
+			res.json(user);
+		});
 		//*DELETE Single Data
 		app.delete("/project/:id", async (req, res) => {
 			const id = req.params.id;
